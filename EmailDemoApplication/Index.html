@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html ng-app="EmailApp">
+<head>
+    <meta charset="utf-8" />
+    <title>Email Demo</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Style.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.2.1.js"></script>
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-animate.js"></script>
+    <script src="Scripts/angular-aria.js"></script>
+    <script src="Scripts/angular-material.js"></script>
+    <script src="Scripts/app/EmailContent.js"></script>
+    <link href="Content/angular-material.css" rel="stylesheet" />
+    <script src="Scripts/tinymce/tinymce.js"></script>
+    <script type="text/javascript">
+        // Initialize your tinyMCE Editor with your preferred options
+        tinyMCE.init({
+            // General options
+            mode: "textareas",
+            theme: "modern",
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor textcolor pagebreak spellchecker',
+                'searchreplace visualblocks code fullscreen hr',
+                'insertdatetime media table contextmenu paste code help'
+            ],
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            theme_advanced_resizing: true,
+        });
+    </script>
+</head>
+<body>
+    <div ng-view ng-controller="EmailContent" ng-cloak>
+        <emailcontent-list>
+            <div class="navbar-default body-content">
+                <a><img src="Scripts/app/9.png" height="30" width="30" ng-click="ConfigPopup($event)" /></a>
+            </div>
+            <div id="page-wrapper" class="container body-content">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label id="lblName" class="control-label col-md-2">To</label>
+                        <div class="col-md-10">
+                            <input type="text" id="txtName" class="form-control required" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id="lblContent" class="control-label col-md-2">Content</label>
+                        <div class="col-md-10">
+                            <div class="required" style="padding: 2px;" id="divtextarea">
+                                <textarea id="txtContent" class="form-control" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-10">
+                            <input type="submit" id="submit" value="Send" class="btn btn-default" ng-click="submit()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </emailcontent-list>
+    </div>
+</body>
+</html>
